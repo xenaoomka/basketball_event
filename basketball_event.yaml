@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: churchball
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: churchball
+  namespace: churchball
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: churchball
+  template:
+    metadata:
+      labels:
+        app: churchball
+    spec:
+      containers:
+      - image: harbor.skvnent.duckdns.org/churchball/churchball:0.1
+        name: churchball
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: churchball-ingress
+  namespace: churchball
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`churchball.skvnent.duckdns.org`)
+      kind: Rule
+      services:
+        - name: churchball
+          port: 80
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: churchball
+  namespace: churchball
+spec:
+  selector:
+    app: churchball
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
