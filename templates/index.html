@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Church Ball Check-in</title>
+    <!-- Volt CSS -->
+    <link type="text/css" href="{{ url_for('static', filename='volt.css') }}" rel="stylesheet">
+
+  </head>
+  <body>
+    <main>
+        <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center form-bg-image">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                <h1 class="mb-0 h3">Church Ball </h1>
+                                <h2>{{ event }} {{ date }}</h2>
+                            </div>
+                            <div class="form-group mb-4">
+                                <form action="/checkin" method="post">
+                                    <input type="hidden" name="event" value="{{ event }}">
+                                    <label for="name">Are You In?</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter your Name" id="name" autofocus required>
+                                    <div class="d-grid">
+                                        <div>&nbsp;</div>
+                                        <input type="submit" value="Check In" class="btn btn-gray-800">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <p>In so far:</p>
+                                <ul>
+                                    {% for attendee in attendees %}
+                                      <li>{{ attendee }}</li>
+                                    {% endfor %}
+                                  </ul>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+  </body>
+</html>
