@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   python:
-    container_name: churchball-python
+    container_name: churchball
     restart: always
     build:
       dockerfile: Dockerfile
@@ -10,7 +10,7 @@ services:
       - db_network
       - web_network
   nginx:
-    container_name: churchball-nginx
+    container_name: nginx
     restart: always
     build:
       dockerfile: nginx/Dockerfile
