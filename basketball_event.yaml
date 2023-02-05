@@ -4,7 +4,18 @@ kind: Namespace
 metadata:
   name: churchball
 
-
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-conf-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 
 ---     
 apiVersion: apps/v1
@@ -22,10 +33,6 @@ spec:
       labels:
         app: churchball
     spec:
-      volumes:
-      - name: nginx-config
-        persistentVolumeClaim:
-          claimName: nginx-config-pvc
       containers:
       - image: harbor.skvnent.duckdns.org/churchball/churchball:0.2
         name: churchball
@@ -36,8 +43,13 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: nginx-config
-          mountPath: /etc/nginx/conf.d
+        - name: nginx-conf-volume
+          mountPath: /etc/nginx
+          subPath: default.conf
+      volumes:
+      - name: nginx-conf-volume
+        persistentVolumeClaim:
+          claimName: nginx-conf-pvc
 
 
 ---
