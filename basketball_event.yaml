@@ -25,6 +25,18 @@ spec:
         name: churchball
         ports:
         - containerPort: 5000
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+      volumeMounts:
+      - name: churchball-config
+        mountPath: /etc/nginx/nginx.conf
+        subPath: nginx.conf
+      volumes:
+      - name: churchball-config
+        configMap:
+          name: churchball-config
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -55,5 +67,5 @@ spec:
     app: churchball
   ports:
     - protocol: TCP
-      port: 5000
+      port: 80
       targetPort: 80
