@@ -29,10 +29,10 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-      volumeMounts:
-      - name: churchball-config
-        mountPath: /etc/nginx/nginx.conf
-        subPath: nginx.conf
+        volumeMounts:
+        - name: churchball-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
       volumes:
       - name: churchball-config
         configMap:
