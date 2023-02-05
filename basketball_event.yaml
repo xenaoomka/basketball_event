@@ -43,9 +43,9 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-          volumeMounts:
-            - name: churchball-nginx-config
-              mountPath: /etc/nginx/conf.d
+        volumeMounts:
+          - name: churchball-nginx-config
+            mountPath: /etc/nginx/conf.d
       volumes:
         - name: churchball-nginx-config
           persistentVolumeClaim:
