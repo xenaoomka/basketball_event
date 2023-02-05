@@ -8,10 +8,11 @@ metadata:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nginx-conf-pvc
+  name: churchball-nginx-conf-pvc
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   resources:
     requests:
       storage: 20Mi
@@ -42,6 +43,13 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
+          volumeMounts:
+            - name: churchball-nginx-config
+              mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: churchball-nginx-config
+          persistentVolumeClaim:
+            claimName: churchball-nginx-conf-pvc
 
 
 
@@ -76,3 +84,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+  type: ClusterIP
