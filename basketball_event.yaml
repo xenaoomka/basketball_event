@@ -24,7 +24,7 @@ spec:
       - image: harbor.skvnent.duckdns.org/churchball/churchball:0.2
         name: churchball
         ports:
-        - containerPort: 80
+        - containerPort: 5000
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -56,4 +56,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5000
+      targetPort: 80
