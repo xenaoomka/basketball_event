@@ -21,7 +21,7 @@ spec:
         app: churchball
     spec:
       containers:
-      - image: harbor.skvnent.duckdns.org/churchball/churchball:0.1
+      - image: harbor.skvnent.duckdns.org/churchball/churchball:0.2
         name: churchball
         ports:
         - containerPort: 80
