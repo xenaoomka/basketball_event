@@ -5,6 +5,31 @@ metadata:
 
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: churchball-nginx-config
+  namespace: churchball
+data:
+  default.conf: |
+    server {
+      listen 80;
+
+      server_name _;
+
+      location / {
+        proxy_pass http://churchball:5000;
+        proxy_read_timeout 10;
+        proxy_set_header Host $host ;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto: http;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+      }
+    }
+
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: churchball-nginx-conf-pvc
@@ -45,6 +70,24 @@ spec:
         volumeMounts:
           - name: churchball-nginx-config
             mountPath: /etc/nginx/conf.d
+        command: ["/bin/sh", "-c"]
+        args: 
+          - |
+            echo 'server {
+              listen 80;
+              server_name _;
+              location / {
+                proxy_set_header Host $host ;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Proto: http;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_pass http://churchball:5000;
+                proxy_read_timeout 10;
+              }
+            }' > /etc/nginx/conf.d/default.conf;
+            nginx -g 'daemon off;'
         env:
         - name: FLASK_APP
           value: churchball
