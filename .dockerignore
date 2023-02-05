@@ -4,5 +4,7 @@ __pycache__
 *.pyo
 *.pyd
 Dockerfile
-nginx
+nginx/
 requirements.txt
+docker-compose.yaml
+deployment.yaml
