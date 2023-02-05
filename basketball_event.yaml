@@ -35,8 +35,8 @@ spec:
           subPath: nginx.conf
       volumes:
       - name: churchball-config
-        configMap:
-          name: churchball-config
+        persistentVolumeClaim:
+          claimName: churchball-config
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
