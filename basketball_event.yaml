@@ -22,6 +22,10 @@ spec:
       labels:
         app: churchball
     spec:
+      volumes:
+      - name: nginx-config
+        persistentVolumeClaim:
+          claimName: nginx-config-pvc
       containers:
       - image: harbor.skvnent.duckdns.org/churchball/churchball:0.2
         name: churchball
@@ -31,6 +35,9 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
 
 
 ---
