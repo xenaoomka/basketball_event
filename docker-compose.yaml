@@ -1,17 +1,20 @@
 version: '3.8'
 services:
-  churchball:
-    container_name: churchball
-    image: harbor.skvnent.duckdns.org/churchball/churchball:0.2
+  python:
+    container_name: churchball-python
     restart: always
-    build: .
+    build:
+      dockerfile: Dockerfile
+      context: .
     networks:
       - db_network
       - web_network
   nginx:
-    container_name: nginx
+    container_name: churchball-nginx
     restart: always
-    image: "nginx:latest"
+    build:
+      dockerfile: nginx/Dockerfile
+      context: .
     ports:
       - "80:80"
     volumes:
@@ -19,7 +22,7 @@ services:
     networks:
       - web_network
     depends_on: 
-      - churchball
+      - python
 networks:
   db_network:
     driver: bridge
