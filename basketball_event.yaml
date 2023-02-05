@@ -5,6 +5,20 @@ metadata:
   name: churchball
 
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: churchball
+  name: churchball-config
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---     
 apiVersion: apps/v1
 kind: Deployment
 metadata:
