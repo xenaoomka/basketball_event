@@ -45,8 +45,7 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: churchball-config
-          mountPath: /etc/nginx/nginx.conf
-          subPath: nginx.conf
+          mountPath: /etc/nginx
       volumes:
       - name: churchball-config
         persistentVolumeClaim:
