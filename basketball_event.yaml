@@ -42,14 +42,7 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: nginx-conf-volume
-          mountPath: /etc/nginx/conf.d/
-          subPath: default.conf
-      volumes:
-      - name: nginx-conf-volume
-        persistentVolumeClaim:
-          claimName: nginx-conf-pvc
+
 
 
 ---
