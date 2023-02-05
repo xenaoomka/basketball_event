@@ -46,6 +46,12 @@ spec:
         volumeMounts:
           - name: churchball-nginx-config
             mountPath: /etc/nginx/conf.d
+        command: ["nginx", "-g", "daemon off;"]
+        env:
+        - name: CHURCHBALL_PORT
+          value: "5000"
+        - name: CHURCHBALL_HOST
+          value: "churchball"
       volumes:
         - name: churchball-nginx-config
           persistentVolumeClaim:
@@ -82,3 +88,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+  type: ClusterIP
