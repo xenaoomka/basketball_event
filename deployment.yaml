@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: churchball
-        image: harbor.skvnent.duckdns.org/churchball/churchball-python:latest
+        image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.4
         ports:
         - containerPort: 5000
       - name: nginx
