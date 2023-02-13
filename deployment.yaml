@@ -73,7 +73,6 @@ spec:
         volumeMounts:
           - name: churchball-nginx-config
             mountPath: /etc/nginx/conf.d
-        command: ["/bin/sh", "-c"]
         env:
         - name: FLASK_APP
           value: churchball
