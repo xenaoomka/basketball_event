@@ -19,6 +19,10 @@ def index():
     #day_of_week = "Tuesday"
     time = now.strftime("%I:%M%p")
 
+    # Clear the list of attendees for each event
+    for event in events:
+        events[event] = []
+
     if day_of_week == "Saturday":
             date = (now + datetime.timedelta(days=2)).strftime("%m/%d/%Y")
             event = "Monday 5:30am"
