@@ -60,14 +60,14 @@ spec:
     spec:
       containers:
       - name: churchball
-        image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.8
+        image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.9
         ports:
         - containerPort: 5000
         env:
         - name: TZ
           value: America/Denver
       - name: nginx
-        image: nginx@sha256:7fd1b0f92598e73e13d996d6ce279905ac5f2381d635c712a86bf8e49cabf0be
+        image: nginx@sha256:0f859db466fda2c52f62b48d0602fb26867d98edbd62c26ae21414b3dea8d8f4
         ports:
         - containerPort: 80
         volumeMounts:
