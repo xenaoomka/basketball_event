@@ -47,7 +47,10 @@ spec:
     spec:
       containers:
       - name: churchball
-        image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.10
+        image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.11
+
+
+        
         ports:
         - containerPort: 5000
         volumeMounts:
