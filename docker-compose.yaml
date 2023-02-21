@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       context: .
     volumes:
-      - ./db:/db
+      - ./db:/app/db
     networks:
       - db_network
       - web_network

@@ -3,7 +3,7 @@ import datetime
 import sqlite3
 
 app = Flask(__name__)
-conn = sqlite3.connect('/app/db/attendees.db', check_same_thread=False)
+conn = sqlite3.connect('db/attendees.db', check_same_thread=False)
 events = {
     "Monday 5:30am": [],
     "Monday 12:00pm": [],
