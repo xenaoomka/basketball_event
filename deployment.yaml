@@ -35,12 +35,23 @@ metadata:
   name: churchball-nginx-conf-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: longhorn
   resources:
     requests:
       storage: 20Mi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: churchball-db-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 50Mi
 
 ---
 apiVersion: apps/v1
@@ -87,6 +98,9 @@ spec:
         - name: churchball-nginx-config
           persistentVolumeClaim:
             claimName: churchball-nginx-conf-pvc
+        - name: churchball-db-config
+          persistentVolumeClaim:
+            claimName: churchball-db-pvc
 
 ---
 apiVersion: v1
