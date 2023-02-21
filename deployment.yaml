@@ -60,9 +60,12 @@ spec:
     spec:
       containers:
       - name: churchball
-        image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.9
+        image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.10
         ports:
         - containerPort: 5000
+        volumeMounts:
+          - name: churchball-db-config
+            mountPath: /db
         env:
         - name: TZ
           value: America/Denver
