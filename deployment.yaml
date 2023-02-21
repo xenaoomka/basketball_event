@@ -10,7 +10,7 @@ metadata:
   name: churchball-nginx-conf-pvc
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: longhorn
   resources:
     requests:
@@ -23,7 +23,7 @@ metadata:
   name: churchball-db-pvc
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: longhorn
   resources:
     requests:
@@ -48,9 +48,6 @@ spec:
       containers:
       - name: churchball
         image: harbor.skvnent.duckdns.org/churchball/churchball-python:0.11
-
-
-        
         ports:
         - containerPort: 5000
         volumeMounts:
