@@ -23,7 +23,7 @@ metadata:
   name: churchball-db-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: longhorn
   resources:
     requests:
@@ -36,7 +36,7 @@ metadata:
   name: churchball
   namespace: churchball
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: churchball
