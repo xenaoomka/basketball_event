@@ -76,7 +76,7 @@ spec:
         - containerPort: 5000
         volumeMounts:
           - name: churchball-db-config
-            mountPath: /db
+            mountPath: /app/db
         env:
         - name: TZ
           value: America/Denver
