@@ -86,10 +86,6 @@ spec:
         env:
         - name: TZ
           value: America/Denver
-        volumes:
-        - name: churchball-db-config
-          persistentVolumeClaim:
-            claimName: churchball-db-pvc
       - name: nginx
         image: nginx@sha256:0f859db466fda2c52f62b48d0602fb26867d98edbd62c26ae21414b3dea8d8f4
         ports:
@@ -122,10 +118,13 @@ spec:
           value: development
         - name: TZ
           value: America/Denver
-        volumes:
+      volumes:
         - name: churchball-nginx-config
           persistentVolumeClaim:
             claimName: churchball-nginx-conf-pvc
+        - name: churchball-db-config
+          persistentVolumeClaim:
+            claimName: churchball-db-pvc
 
 ---
 apiVersion: v1
