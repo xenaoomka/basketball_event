@@ -23,7 +23,7 @@ def index():
 
     if day_of_week == "Saturday":
             date = (now + datetime.timedelta(days=2)).strftime("%m/%d/%Y")
-            event = date+"Monday 5:30am"
+            event = date+" Monday 5:30am"
 
     if day_of_week == "Sunday":
             date = (now + datetime.timedelta(days=1)).strftime("%m/%d/%Y")
