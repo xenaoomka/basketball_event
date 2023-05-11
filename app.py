@@ -77,5 +77,5 @@ def checkin():
     return redirect("/")
 
 if __name__ == "__main__":
-    conn.execute("CREATE TABLE IF NOT EXISTS attendees (name TEXT, event TEXT)")
+    conn.execute("CREATE TABLE IF NOT EXISTS attendees (name TEXT, event TEXT, date TEXT)")
     app.run()
