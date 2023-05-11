@@ -30,7 +30,7 @@ spec:
   storageClassName: longhorn
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
-p3
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
