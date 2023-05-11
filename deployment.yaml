@@ -15,7 +15,6 @@ spec:
   resources:
     requests:
       storage: 20Mi
-  persistentVolumeReclaimPolicy: Retain
 
 ---
 apiVersion: v1
@@ -29,7 +28,6 @@ spec:
   resources:
     requests:
       storage: 50Mi
-  persistentVolumeReclaimPolicy: Retain
 
 ---
 apiVersion: apps/v1
@@ -94,9 +92,11 @@ spec:
         - name: churchball-nginx-config
           persistentVolumeClaim:
             claimName: churchball-nginx-conf-pvc
+          persistentVolumeReclaimPolicy: Retain
         - name: churchball-db-config
           persistentVolumeClaim:
             claimName: churchball-db-pvc
+          persistentVolumeReclaimPolicy: Retain
 
 ---
 apiVersion: v1
