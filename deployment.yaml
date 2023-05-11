@@ -23,7 +23,7 @@ metadata:
   name: churchball-db-pv
 spec:
   capacity:
-    storage: 20Mi
+    storage: 50Mi
   accessModes:
     - ReadWriteMany
   storageClassName: longhorn
