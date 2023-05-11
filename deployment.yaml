@@ -15,6 +15,7 @@ spec:
   resources:
     requests:
       storage: 20Mi
+  persistentVolumeReclaimPolicy: Retain
 
 ---
 apiVersion: v1
@@ -28,6 +29,7 @@ spec:
   resources:
     requests:
       storage: 50Mi
+  persistentVolumeReclaimPolicy: Retain
 
 ---
 apiVersion: apps/v1
