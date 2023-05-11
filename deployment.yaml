@@ -5,6 +5,32 @@ metadata:
 
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: churchball-nginx-conf-pv
+spec:
+  capacity:
+    storage: 20Mi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: churchball-db-pv
+spec:
+  capacity:
+    storage: 20Mi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: churchball-nginx-conf-pvc
@@ -92,12 +118,10 @@ spec:
         - name: churchball-nginx-config
           persistentVolumeClaim:
             claimName: churchball-nginx-conf-pvc
-          persistentVolumeReclaimPolicy: Retain
         - name: churchball-db-config
           persistentVolumeClaim:
             claimName: churchball-db-pvc
-          persistentVolumeReclaimPolicy: Retain
-
+          
 ---
 apiVersion: v1
 kind: Service
