@@ -7,7 +7,7 @@ __pycache__/
 .coverage
 
 # database & logs
-*.db
+#*.db
 *.sqlite3
 *.log
 
