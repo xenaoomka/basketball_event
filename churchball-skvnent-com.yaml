@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: churchball-skvnent-com
+  namespace: churchball
+spec:
+  secretName: churchball-skvnent-com-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "churchball.skvnent.com"
+  dnsNames:
+  - "churchball.skvnent.com"

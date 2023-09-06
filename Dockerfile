@@ -1,5 +1,5 @@
 # Use an official Python image as the base image
-FROM python@sha256:1c7b5a998076ab7aa0a8745ab1461441a5bdc61e366985b9bfe3f4044c2b4503
+FROM python@sha256:e5d592c422d6e527cb946ae6abb1886c511a5e163d3543865f5a5b9b61c01584
 
 # Set the working directory to /app
 WORKDIR /app
